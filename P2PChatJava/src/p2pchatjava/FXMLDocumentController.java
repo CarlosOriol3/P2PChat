@@ -24,7 +24,9 @@ import javafx.scene.control.TextArea;
  */
 public class FXMLDocumentController implements Initializable {
     
+    //Setting Observable list for list view
     ObservableList<Message> messages = FXCollections.observableArrayList();
+    
     
     @FXML
     private Label label;
@@ -58,7 +60,9 @@ public class FXMLDocumentController implements Initializable {
             
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        txtMessage.setWrapText(true);
         listMessage.setItems(messages);
+        
     }    
     
 }

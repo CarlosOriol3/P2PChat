@@ -12,7 +12,7 @@
       <TextArea fx:id="txtMessage" layoutX="14.0" layoutY="437.0" prefHeight="62.0" prefWidth="342.0" />
       <Button fx:id="btnSend" layoutX="356.0" layoutY="437.0" mnemonicParsing="false" onAction="#handleSendAction" prefHeight="62.0" prefWidth="127.0" text="Send" />
       <ListView fx:id="listMessage" layoutX="15.0" layoutY="103.0" prefHeight="329.0" prefWidth="466.0" />
-      <Label layoutX="150.0" layoutY="33.0" prefHeight="70.0" prefWidth="196.0" text="P2PChat">
+      <Label layoutX="150.0" layoutY="14.0" prefHeight="70.0" prefWidth="196.0" text="P2PChat">
          <font>
             <Font size="48.0" />
          </font>
