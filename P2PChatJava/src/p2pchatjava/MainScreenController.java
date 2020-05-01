@@ -30,8 +30,26 @@ public class MainScreenController implements Initializable {
     //Setting Observable list for list view
     ObservableList<Message> messages = FXCollections.observableArrayList();
 
+    private String ip;
+
+    private String codename;
+
     @FXML
-    private Label label;
+    private Label lblIpAddress;
+
+    /**
+     * @param ip the ip to set
+     */
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    /**
+     * @param codename the codename to set
+     */
+    public void setCodename(String codename) {
+        this.codename = codename;
+    }
 
     @FXML
     private void handleSendAction(ActionEvent event) {
@@ -73,7 +91,8 @@ public class MainScreenController implements Initializable {
         txtMessage.setWrapText(true);
         listMessage.setItems(messages);
         setWraptextListView();
-
+        lblIpAddress.setText(this.ip);
+        lblIpAddress.setVisible(true);
     }
 
     public void setWraptextListView() {

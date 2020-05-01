@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -23,13 +24,24 @@ import javafx.stage.Stage;
  * @author Carlos
  */
 public class ConnectScreenController implements Initializable {
+
+    @FXML
+    private TextField txtCodename;
+
+    @FXML
+    private TextField txtIp;
+
     @FXML
     private Button btnConnect;
     
     @FXML
     private void handleConnectAction(ActionEvent event) throws IOException {
         Stage stage = new Stage();
-        Parent MainScreen = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainScreen.fxml"));
+        Parent MainScreen = (Parent)fxmlLoader.load();
+        MainScreenController controller = fxmlLoader.<MainScreenController>getController();
+        controller.setIp(this.txtIp.getText());
+        controller.setCodename(this.txtCodename.getText());
 
         Scene scene = new Scene(MainScreen);
 
