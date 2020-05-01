@@ -46,11 +46,19 @@ public class ConnectScreenController implements Initializable {
         Scene scene = new Scene(MainScreen);
 
         stage.setScene(scene);
+        
+        //set unresizable
+        stage.setResizable(false);
+        
+        //set window title
+        stage.setTitle("P2PChat");
+        
         stage.show();
 
         Stage ConnectScreen = (Stage) btnConnect.getScene().getWindow();
         
         ConnectScreen.close();
+        
     }
 
     @Override

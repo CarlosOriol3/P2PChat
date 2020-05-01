@@ -94,6 +94,8 @@ public class MainScreenController implements Initializable {
         setWraptextListView();
         Platform.runLater(() -> lblIpAddress.setText(ip));
         lblIpAddress.setVisible(true);
+        
+        
     }
 
     public void setWraptextListView() {
