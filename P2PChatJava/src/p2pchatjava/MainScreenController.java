@@ -19,6 +19,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  *
@@ -48,10 +49,19 @@ public class MainScreenController implements Initializable {
         txtMessage.clear();
 
     }
+    
+    @FXML
+    private void handleDisconnectAction(ActionEvent event){
+        Stage MainScreen = (Stage) btnDisconnect.getScene().getWindow();
+        MainScreen.close();
+    }
 
     @FXML
     private Button btnSend;
 
+    @FXML
+    private Button btnDisconnect;
+    
     @FXML
     private ListView listMessage;
 

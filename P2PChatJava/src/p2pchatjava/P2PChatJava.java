@@ -19,7 +19,7 @@ public class P2PChatJava extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("ConnectScreen.fxml"));
         
         Scene scene = new Scene(root);
     
