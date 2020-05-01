@@ -8,6 +8,7 @@ package p2pchatjava;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -91,7 +92,7 @@ public class MainScreenController implements Initializable {
         txtMessage.setWrapText(true);
         listMessage.setItems(messages);
         setWraptextListView();
-        lblIpAddress.setText(this.ip);
+        Platform.runLater(() -> lblIpAddress.setText(ip));
         lblIpAddress.setVisible(true);
     }
 

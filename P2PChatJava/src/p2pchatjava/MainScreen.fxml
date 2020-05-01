@@ -25,7 +25,7 @@
                <font>
                   <Font name="Monospaced Regular" size="12.0" />
                </font></Label>
-            <Label fx:id="lblIpAddress" layoutX="22.0" layoutY="52.0" text="ip label">
+            <Label fx:id="lblIpAddress" layoutX="22.0" layoutY="52.0" prefHeight="15.0" prefWidth="107.0" text="ip label">
                <font>
                   <Font name="Monospaced Regular" size="12.0" />
                </font></Label>
