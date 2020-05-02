@@ -29,7 +29,7 @@ import java.net.*;
  */
 public class MainScreenController implements Initializable {
 
-    //Setting Observable list for list view
+    // Setting Observable list for list view
     ObservableList<Message> messages = FXCollections.observableArrayList();
 
     private String ip;
@@ -39,49 +39,12 @@ public class MainScreenController implements Initializable {
     @FXML
     private Label lblIpAddress;
 
-    /**
-     * @param ip the ip to set
-     */
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
-
-    /**
-     * @param codename the codename to set
-     */
-    public void setCodename(String codename) {
-        this.codename = codename;
-    }
-
-    @FXML
-    private void handleSendAction(ActionEvent event) {
-        String validator = txtMessage.getText().trim();
-        if (validator.equals("")) {
-            //System.out.println("Mensaje vacio");
-            return;
-        }
-        Message message = new Message();
-        message.setMessageText(txtMessage.getText());
-        //String message = txtMessage.getText();
-
-        System.out.println(message);
-        messages.add(message);
-        txtMessage.clear();
-
-    }
-    
-    @FXML
-    private void handleDisconnectAction(ActionEvent event){
-        Stage MainScreen = (Stage) btnDisconnect.getScene().getWindow();
-        MainScreen.close();
-    }
-
     @FXML
     private Button btnSend;
 
     @FXML
     private Button btnDisconnect;
-    
+
     @FXML
     private ListView listMessage;
 
@@ -90,7 +53,7 @@ public class MainScreenController implements Initializable {
 
     @FXML
     private ListView listOnlineUsers;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         txtMessage.setWrapText(true);
@@ -98,16 +61,43 @@ public class MainScreenController implements Initializable {
         setWraptextListView();
         Platform.runLater(() -> lblIpAddress.setText(ip));
         lblIpAddress.setVisible(true);
-        
         listMessage.setFocusTraversable(false);
         listOnlineUsers.setFocusTraversable(false);
-        
         btnDisconnect.setFocusTraversable(false);
-        
-        
     }
 
-    public void setWraptextListView() {
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public void setCodename(String codename) {
+        this.codename = codename;
+    }
+
+    @FXML
+    private void handleSendAction(ActionEvent event) {
+        String validator = txtMessage.getText().trim();
+        if (validator.equals("")) {
+            // System.out.println("Mensaje vacio");
+            return;
+        }
+        Message message = new Message();
+        message.setMessageText(txtMessage.getText());
+        // String message = txtMessage.getText();
+
+        System.out.println(message);
+        messages.add(message);
+        txtMessage.clear();
+
+    }
+
+    @FXML
+    private void handleDisconnectAction(ActionEvent event) {
+        Stage MainScreen = (Stage) btnDisconnect.getScene().getWindow();
+        MainScreen.close();
+    }
+
+    private void setWraptextListView() {
         listMessage.setCellFactory(param -> new ListCell<Message>() {
             @Override
             protected void updateItem(Message item, boolean empty) {
@@ -115,23 +105,14 @@ public class MainScreenController implements Initializable {
                 if (empty || item == null) {
                     setGraphic(null);
                     setText(null);
-                    // other stuff to do...
-
                 } else {
-
-                     //set the width's
                     setMinWidth(10);
                     setMaxWidth(10);
                     setPrefWidth(10);
-
-                    // allow wrapping
                     setWrapText(true);
-
                     setText(item.toString());
-
                 }
             }
         });
     }
-
 }
