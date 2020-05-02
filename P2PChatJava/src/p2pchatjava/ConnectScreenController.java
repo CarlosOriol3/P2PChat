@@ -5,7 +5,9 @@
  */
 package p2pchatjava;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -19,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 import java.net.*;
+import javafx.scene.control.Label;
 
 public class ConnectScreenController implements Initializable {
 
@@ -30,6 +33,9 @@ public class ConnectScreenController implements Initializable {
 
     @FXML
     private Button btnConnect;
+    
+    @FXML
+    private Label myIp;
 
     private Thread listener;
 
@@ -38,6 +44,22 @@ public class ConnectScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Platform.runLater( () -> {StartListener();} );
+
+        String systemipaddress = ""; 
+        try
+        { 
+            URL url_name = new URL("http://bot.whatismyipaddress.com/");
+            BufferedReader sc = new BufferedReader(new InputStreamReader(url_name.openStream()));
+            // reads system IPAddress 
+            systemipaddress = sc.readLine().trim(); 
+        } 
+        catch (Exception e) 
+        { 
+            systemipaddress = "Cannot Execute Properly"; 
+            System.out.println(e.getClass().getCanonicalName());
+        }
+        String ip = "My ip: "+systemipaddress;
+        myIp.setText(ip);
     }
 
     @FXML
