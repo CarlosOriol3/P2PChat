@@ -87,6 +87,9 @@ public class MainScreenController implements Initializable {
     @FXML
     private TextArea txtMessage;
 
+    @FXML
+    private ListView listOnlineUsers;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         txtMessage.setWrapText(true);
@@ -94,6 +97,11 @@ public class MainScreenController implements Initializable {
         setWraptextListView();
         Platform.runLater(() -> lblIpAddress.setText(ip));
         lblIpAddress.setVisible(true);
+        
+        listMessage.setFocusTraversable(false);
+        listOnlineUsers.setFocusTraversable(false);
+        
+        btnDisconnect.setFocusTraversable(false);
         
         
     }
