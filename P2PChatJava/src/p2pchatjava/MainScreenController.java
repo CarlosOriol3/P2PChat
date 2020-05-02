@@ -21,6 +21,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import java.net.*;
 
 /**
  *
@@ -94,7 +95,6 @@ public class MainScreenController implements Initializable {
         setWraptextListView();
         Platform.runLater(() -> lblIpAddress.setText(ip));
         lblIpAddress.setVisible(true);
-        
         
     }
 

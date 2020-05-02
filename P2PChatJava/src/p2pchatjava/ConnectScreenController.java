@@ -8,6 +8,7 @@ package p2pchatjava;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,12 +18,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
+import java.net.*;
 
-/**
- * FXML Controller class
- *
- * @author Carlos
- */
 public class ConnectScreenController implements Initializable {
 
     @FXML
@@ -33,7 +30,16 @@ public class ConnectScreenController implements Initializable {
 
     @FXML
     private Button btnConnect;
-    
+
+    private Thread listener;
+
+    private volatile Socket socket;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        Platform.runLater( () -> {StartListener();} );
+    }
+
     @FXML
     private void handleConnectAction(ActionEvent event) throws IOException {
         Stage stage = new Stage();
@@ -61,9 +67,27 @@ public class ConnectScreenController implements Initializable {
         
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    private synchronized void StartListener() {
+        listener = new Thread("listener") {
+            public void run() {
+                try {
+                    ServerSocket server = new ServerSocket(10000);
+                    try {
+                        socket = server.accept();
+                        if (socket.isConnected()) {
+                            System.out.println("Connected");
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    } finally {
+                        server.close();
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    Platform.exit();
+                }
+            }
+        };
+        listener.start();
     }
-
 }
