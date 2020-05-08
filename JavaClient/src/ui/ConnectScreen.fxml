@@ -22,7 +22,7 @@
                 <Font name="Monospaced Regular" size="22.0" />
             </font>
         </Label>
-        <TextField fx:id="txtCodename" layoutX="73.0" layoutY="98.0" prefHeight="26.0" prefWidth="180.0" promptText="Codename">
+        <TextField fx:id="txtCodename" layoutX="73.0" layoutY="98.0" prefHeight="26.0" prefWidth="180.0" promptText="Codename" styleClass="textfield">
             <font>
                 <Font name="Monospaced Regular" size="14.0" />
             </font>
@@ -32,7 +32,7 @@
                 <Font name="Monospaced Regular" size="10.0" />
             </font>
         </Label>
-        <TextField fx:id="txtIp" layoutX="73.0" layoutY="138.0" prefHeight="26.0" prefWidth="180.0" promptText="ip address">
+        <TextField fx:id="txtIp" layoutX="73.0" layoutY="138.0" prefHeight="26.0" prefWidth="180.0" promptText="ip address" styleClass="textfield">
             <font>
                 <Font name="Monospaced Regular" size="14.0" />
             </font>

@@ -3,5 +3,19 @@
  */
 
 .mainFxmlClass {
+	-fx-background-color: #1A1A1A;
+}
 
+.label {
+	-fx-text-fill: #99CCFF;
+}
+
+.textfield {
+	-fx-background-color: #e6e6e6;
+        -fx-text-fill: #575757;
+}
+
+.button {
+	-fx-background-color: #006666;
+	-fx-text-fill: #fff;
 }

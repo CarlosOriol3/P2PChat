@@ -23,7 +23,7 @@ public class JavaClient extends Application {
         Parent root = FXMLLoader.load(ConnectScreenController.class.getResource("ConnectScreen.fxml"));
 
         Scene scene = new Scene(root);
-
+        scene.getStylesheets().add(ConnectScreenController.class.getResource("connectscreen.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
 
@@ -31,7 +31,7 @@ public class JavaClient extends Application {
         stage.setResizable(false);
 
         //set window title
-        stage.setTitle("P2PChat");
+        stage.setTitle("P2P Chat");
     }
 
     /**
