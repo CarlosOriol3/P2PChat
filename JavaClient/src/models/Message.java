@@ -12,6 +12,7 @@ package models;
 import java.time.LocalDate;
 import java.time.LocalTime;
 public class Message {
+   
     private String messageText;
     private LocalTime timeStamp;
     private LocalDate date;
