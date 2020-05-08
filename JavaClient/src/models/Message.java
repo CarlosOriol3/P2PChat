@@ -17,6 +17,7 @@ public class Message {
     private LocalDate date;
     private String user;
 
+    //Constructor
     public Message() {
         this.timeStamp = LocalTime.now();
         this.date = LocalDate.now();
