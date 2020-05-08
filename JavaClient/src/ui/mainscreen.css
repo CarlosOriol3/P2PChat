@@ -7,7 +7,7 @@
     -fx-text-fill: #99CCFF;
 }
 
-.textarea {
+.text-area {
     -fx-background-color: #e6e6e6;
     -fx-text-fill: #575757;
 }
@@ -16,3 +16,19 @@
     -fx-background-color: #006666;
     -fx-text-fill: #fff;
 }
+
+.list-view, .list-cell {
+    -fx-background-color: #787878;
+}
+
+.list-view .list-cell {
+    -fx-text-fill: whitesmoke;
+}
+
+/*.list-view .list-cell:even {
+    -fx-background-color: #a3a3a3;
+}
+
+.list-view .list-cell:odd {
+    -fx-background-color: #787878;
+}*/
