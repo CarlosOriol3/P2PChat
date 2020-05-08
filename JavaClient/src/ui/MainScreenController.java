@@ -7,7 +7,6 @@ package ui;
 
 import models.Message;
 import java.net.URL;
-import java.util.HashSet;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -20,9 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import java.net.*;
 
 /**
  *

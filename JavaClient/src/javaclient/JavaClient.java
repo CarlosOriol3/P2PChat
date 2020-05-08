@@ -3,29 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main;
+package javaclient;
 
-import java.net.URL;
-import java.io.File;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import ui.ConnectScreenController;
 
 /**
  *
  * @author Carlos
  */
-public class Main extends Application {
-    
+public class JavaClient extends Application {
+
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getPackage().getClass().getResource("ui/ConnectScreen.fxml"));
-        
+        Parent root = FXMLLoader.load(ConnectScreenController.class.getResource("ConnectScreen.fxml"));
+
         Scene scene = new Scene(root);
-        
+
         stage.setScene(scene);
         stage.show();
 
@@ -43,5 +41,5 @@ public class Main extends Application {
         launch(args);
         System.exit(0);
     }
-    
+
 }
