@@ -1,13 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ui;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import models.Message;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,7 +7,6 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -26,17 +17,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Carlos
- */
 public class MainScreenController implements Initializable {
 
     // Setting Observable list for list view
     ObservableList<Message> messages = FXCollections.observableArrayList();
-    
+
     ObservableList<String> OnlineUsers = FXCollections.observableArrayList();
- 
 
     private String ip;
 
@@ -70,36 +56,10 @@ public class MainScreenController implements Initializable {
         listMessage.setFocusTraversable(false);
         listOnlineUsers.setFocusTraversable(false);
         btnDisconnect.setFocusTraversable(false);
-        
-        Platform.runLater(()->listOnlineUsers.getItems().add(codename));
-        //listOnlineUsers.getItems().add(""+codename+"/");
-        
-        
-        txtMessage.setOnKeyPressed(event -> {
-            if (event.isShiftDown() && event.getCode() == KeyCode.ENTER){
-                txtMessage.appendText("\n");
-            } 
-            else if (event.getCode() == KeyCode.ENTER) {
-                //type here what you want
-                String validator = txtMessage.getText().trim();
-                if (validator.equals("")) {
-                    // System.out.println("Mensaje vacio");
-                    event.consume();
-                    return;
-                }
-                Message message = new Message();
-                if(codename != ""){
-                    message.setUser(codename);
-                }
-                message.setMessageText(txtMessage.getText());
-                // String message = txtMessage.getText();
 
-                System.out.println(message);
-                messages.add(message);
-                txtMessage.clear();
-                event.consume();
-            }
-        });
+        Platform.runLater(() -> listOnlineUsers.getItems().add(codename));
+
+        handleEnterKeyPress();
 
     }
 
@@ -119,6 +79,7 @@ public class MainScreenController implements Initializable {
             return;
         }
         Message message = new Message();
+        message.setUser(codename);
         message.setMessageText(txtMessage.getText());
         // String message = txtMessage.getText();
         System.out.println(message);
@@ -148,6 +109,31 @@ public class MainScreenController implements Initializable {
                     setWrapText(true);
                     setText(item.toString());
                 }
+            }
+        });
+    }
+
+    private void handleEnterKeyPress() {
+        txtMessage.setOnKeyPressed(event -> {
+            if (event.isShiftDown() && event.getCode() == KeyCode.ENTER) {
+                txtMessage.appendText("\n");
+            } else if (event.getCode() == KeyCode.ENTER) {
+                //type here what you want
+                String validator = txtMessage.getText().trim();
+                if (validator.equals("")) {
+                    // System.out.println("Mensaje vacio");
+                    event.consume();
+                    return;
+                }
+                Message message = new Message();
+                message.setUser(codename);
+                message.setMessageText(txtMessage.getText());
+                // String message = txtMessage.getText();
+
+                System.out.println(message);
+                messages.add(message);
+                txtMessage.clear();
+                event.consume();
             }
         });
     }

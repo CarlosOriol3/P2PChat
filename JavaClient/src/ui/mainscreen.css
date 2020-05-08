@@ -1,6 +1,3 @@
-/*
- * Empty Stylesheet file.
- */
 
 .mainFxmlClass {
     -fx-background-color: #1A1A1A;
@@ -10,7 +7,7 @@
     -fx-text-fill: #99CCFF;
 }
 
-.textfield {
+.textarea {
     -fx-background-color: #e6e6e6;
     -fx-text-fill: #575757;
 }
