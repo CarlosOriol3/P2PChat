@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="261.0" prefWidth="326.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ConnectScreenController">
+<AnchorPane id="AnchorPane" prefHeight="261.0" prefWidth="326.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ConnectScreenController">
     <stylesheets>
         <URL value="@connectscreen.css" />
     </stylesheets>
@@ -37,7 +37,7 @@
                 <Font name="Monospaced Regular" size="14.0" />
             </font>
         </TextField>
-        <Label fx:id="myIp" layoutX="73.0" layoutY="166.0" prefHeight="15.0" prefWidth="180.0" text="My ip:">
+        <Label fx:id="myIp" layoutX="73.0" layoutY="172.0" prefHeight="15.0" prefWidth="180.0" text="My ip:">
             <font>
                 <Font name="Monospaced Regular" size="12.0" />
             </font>

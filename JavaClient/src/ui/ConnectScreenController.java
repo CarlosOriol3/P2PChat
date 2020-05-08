@@ -63,29 +63,41 @@ public class ConnectScreenController implements Initializable {
 
     @FXML
     private void handleConnectAction(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainScreen.fxml"));
-        Parent MainScreen = (Parent) fxmlLoader.load();
-        MainScreenController controller = fxmlLoader.<MainScreenController>getController();
-        controller.setIp(this.txtIp.getText());
-        controller.setCodename(this.txtCodename.getText());
+        String tmpIp = txtIp.getText();
+        String tmpCodename = txtCodename.getText();
+        if (!(tmpIp.trim().isEmpty()) && !(tmpCodename.trim().isEmpty())) {
+            Stage stage = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainScreen.fxml"));
+            Parent MainScreen = (Parent) fxmlLoader.load();
+            MainScreenController controller = fxmlLoader.<MainScreenController>getController();
+            controller.setIp(tmpIp);
+            controller.setCodename(tmpCodename);
 
-        Scene scene = new Scene(MainScreen);
+            Scene scene = new Scene(MainScreen);
 
-        stage.setScene(scene);
+            stage.setScene(scene);
 
-        //set unresizable
-        stage.setResizable(false);
+            //set unresizable
+            stage.setResizable(false);
 
-        //set window title
-        stage.setTitle("P2PChat");
+            //set window title
+            stage.setTitle("P2PChat");
 
-        stage.show();
+            stage.show();
 
-        Stage ConnectScreen = (Stage) btnConnect.getScene().getWindow();
+            Stage ConnectScreen = (Stage) btnConnect.getScene().getWindow();
 
-        ConnectScreen.close();
-
+            ConnectScreen.close();
+        }
+        else {
+            System.out.println("Campos invalidos");
+            if(tmpCodename.trim().isEmpty()){
+                txtCodename.setPromptText("Cannot be empty");
+            }
+            if(tmpIp.trim().isEmpty()){
+                txtIp.setPromptText("Cannot be empty");
+            }
+        }
     }
 
     private synchronized void StartListener() {

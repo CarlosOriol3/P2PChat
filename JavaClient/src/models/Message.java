@@ -58,7 +58,7 @@ public class Message {
 
     @Override
     public String toString() {
-        return "User: " + messageText;
+        return user +": "+ messageText;
     }
     
         

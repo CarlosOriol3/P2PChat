@@ -34,6 +34,9 @@ public class MainScreenController implements Initializable {
 
     // Setting Observable list for list view
     ObservableList<Message> messages = FXCollections.observableArrayList();
+    
+    ObservableList<String> OnlineUsers = FXCollections.observableArrayList();
+ 
 
     private String ip;
 
@@ -67,7 +70,11 @@ public class MainScreenController implements Initializable {
         listMessage.setFocusTraversable(false);
         listOnlineUsers.setFocusTraversable(false);
         btnDisconnect.setFocusTraversable(false);
-
+        
+        Platform.runLater(()->listOnlineUsers.getItems().add(codename));
+        //listOnlineUsers.getItems().add(""+codename+"/");
+        
+        
         txtMessage.setOnKeyPressed(event -> {
             if (event.isShiftDown() && event.getCode() == KeyCode.ENTER){
                 txtMessage.appendText("\n");
@@ -81,6 +88,9 @@ public class MainScreenController implements Initializable {
                     return;
                 }
                 Message message = new Message();
+                if(codename != ""){
+                    message.setUser(codename);
+                }
                 message.setMessageText(txtMessage.getText());
                 // String message = txtMessage.getText();
 
