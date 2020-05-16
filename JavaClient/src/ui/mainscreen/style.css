@@ -1,4 +1,3 @@
-
 .mainFxmlClass {
     -fx-background-color: #1A1A1A;
 }
@@ -24,11 +23,3 @@
 .list-view .list-cell {
     -fx-text-fill: whitesmoke;
 }
-
-/*.list-view .list-cell:even {
-    -fx-background-color: #a3a3a3;
-}
-
-.list-view .list-cell:odd {
-    -fx-background-color: #787878;
-}*/

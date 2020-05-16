@@ -1,21 +1,21 @@
 package models;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
+
 public class Message {
-   
+
     private String messageText;
     private LocalTime timeStamp;
     private LocalDate date;
-    private String user;
+    private User user;
 
     // Constructor
     public Message() {
         this.timeStamp = LocalTime.now();
         this.date = LocalDate.now();
     }
-    
 
-    
     public String getMessageText() {
         return messageText;
     }
@@ -24,11 +24,11 @@ public class Message {
         return timeStamp;
     }
 
-    public String getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
@@ -50,10 +50,7 @@ public class Message {
 
     @Override
     public String toString() {
-        return user +": "+ messageText;
+        return user.toString() + ": " + messageText;
     }
-    
-        
+
 }
-
-

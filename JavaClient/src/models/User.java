@@ -1,19 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package models;
 
-/**
- *
- * @author Carlos
- */
 public class User {
     private String name;
     private boolean online;
-    
-    public User(String name){
+
+    public User(String name) {
         this.name = name;
         this.online = true;
     }
@@ -32,5 +23,10 @@ public class User {
 
     public boolean isOnline() {
         return online;
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }

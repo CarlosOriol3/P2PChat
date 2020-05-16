@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="424.0" prefWidth="697.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainScreenController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="424.0" prefWidth="697.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.mainscreen.MainScreenController">
    <children>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="438.0" prefWidth="222.0">
          <children>
@@ -22,7 +22,7 @@
                   <Font name="Monospaced Regular" size="12.0" />
                </font>
             </Label>
-            <ListView fx:id="listOnlineUsers" layoutX="22.0" layoutY="130.0" prefHeight="240.0" prefWidth="155.0" styleClass="listview" />
+            <ListView fx:id="listViewOnlineUsers" layoutX="22.0" layoutY="130.0" prefHeight="240.0" prefWidth="155.0" styleClass="listview" />
             <Label layoutX="104.0" layoutY="387.0" prefHeight="39.0" prefWidth="97.0" text="P2P Chat v0.2">
                <font>
                   <Font name="Monospaced Regular" size="12.0" />
@@ -42,7 +42,7 @@
       </AnchorPane>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="586.0" prefWidth="514.0">
          <children>
-            <ListView fx:id="listMessage" layoutX="14.0" layoutY="14.0" prefHeight="329.0" prefWidth="466.0" />
+            <ListView fx:id="listViewMessages" layoutX="14.0" layoutY="14.0" prefHeight="329.0" prefWidth="466.0" />
             <TextArea fx:id="txtMessage" layoutX="14.0" layoutY="352.0" prefHeight="62.0" prefWidth="342.0" promptText="Enter your message">
                <font>
                   <Font name="Monospaced Regular" size="12.0" />
