@@ -4,6 +4,8 @@ import ui.ScreenController;
 import models.Message;
 import models.User;
 import java.net.URL;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -18,8 +20,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
+import models.Client;
+import models.Server;
 
-public class MainScreenController extends ScreenController implements Initializable {
+public class MainScreenController extends ScreenController implements Initializable,Observer {
 
     // Setting Observable list for list view
     ObservableList<Message> listMessages = FXCollections.observableArrayList();
@@ -58,6 +62,13 @@ public class MainScreenController extends ScreenController implements Initializa
         listViewOnlineUsers.setFocusTraversable(false);
         btnDisconnect.setFocusTraversable(false);
         handleEnterKeyPress();
+        
+        //Servidor
+        Server s = new Server(5000);
+        s.addObserver(this);
+        Thread t = new Thread(s);
+        t.start();
+        
 
     }
 
@@ -82,7 +93,9 @@ public class MainScreenController extends ScreenController implements Initializa
         System.out.println(message);
         listMessages.add(message);
         txtMessage.clear();
-
+        
+        Client c = new Client(ip,5000,message);
+        System.out.println(ip);
     }
 
     @FXML
@@ -133,5 +146,10 @@ public class MainScreenController extends ScreenController implements Initializa
                 event.consume();
             }
         });
+    }
+
+    @Override
+    public void update(Observable o, Object o1) {
+        listMessages.add((Message) o1);
     }
 }

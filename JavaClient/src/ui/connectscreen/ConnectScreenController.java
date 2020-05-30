@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 import java.net.*;
 import javafx.scene.control.Label;
+import models.Server;
 
 public class ConnectScreenController extends ScreenController implements Initializable {
 
@@ -32,6 +33,9 @@ public class ConnectScreenController extends ScreenController implements Initial
     private Button btnConnect;
 
     @FXML
+    private Button btnCreate;
+
+    @FXML
     private Label myIp;
 
     private Thread listener;
@@ -40,9 +44,9 @@ public class ConnectScreenController extends ScreenController implements Initial
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Platform.runLater(() -> {
-            StartListener();
-        });
+//        Platform.runLater(() -> {
+//            StartListener();
+//        });
 
         String systemipaddress;
         try {
@@ -74,8 +78,10 @@ public class ConnectScreenController extends ScreenController implements Initial
             mainScreenController.addUser(newUser);
 
             Stage connectScreen = (Stage) btnConnect.getScene().getWindow();
-
+            
             connectScreen.close();
+            
+            
         } else {
             System.out.println("Campos invalidos");
             if (tmpCodename.trim().isEmpty()) {
@@ -87,27 +93,47 @@ public class ConnectScreenController extends ScreenController implements Initial
         }
     }
 
-    private synchronized void StartListener() {
-        listener = new Thread("listener") {
-            public void run() {
-                try {
-                    ServerSocket server = new ServerSocket(10000);
-                    try {
-                        socket = server.accept();
-                        if (socket.isConnected()) {
-                            System.out.println("Connected");
-                        }
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
-                    } finally {
-                        server.close();
-                    }
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                    Platform.exit();
-                }
-            }
-        };
-        listener.start();
+    @FXML
+    private void handleCreateAction(ActionEvent event) {
+        String tmpIp = txtIp.getText();
+        String tmpCodename = txtCodename.getText();
+        
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(MainScreenController.class.getResource("MainScreen.fxml"));
+
+        JavaClient.changeWindow(stage, fxmlLoader, "Main Screen");
+
+        MainScreenController mainScreenController = fxmlLoader.getController();
+        User newUser = new User(tmpCodename);
+        mainScreenController.setIp(tmpIp);
+        mainScreenController.addUser(newUser);
+
+        Stage connectScreen = (Stage) btnConnect.getScene().getWindow();
+
+        connectScreen.close();
     }
+
+//    private synchronized void StartListener() {
+//        listener = new Thread("listener") {
+//            public void run() {
+//                try {
+//                    ServerSocket server = new ServerSocket(10000);
+//                    try {
+//                        socket = server.accept();
+//                        if (socket.isConnected()) {
+//                            System.out.println("Connected");
+//                        }
+//                    } catch (Exception e) {
+//                        System.out.println(e.getMessage());
+//                    } finally {
+//                        server.close();
+//                    }
+//                } catch (Exception e) {
+//                    System.out.println(e.getMessage());
+//                    Platform.exit();
+//                }
+//            }
+//        };
+//        listener.start();
+//    }
 }
