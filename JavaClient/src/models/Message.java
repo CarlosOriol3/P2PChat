@@ -19,8 +19,8 @@ public class Message {
     public Message(String msg) {
         this.timeStamp = LocalTime.now();
         this.date = LocalDate.now();
-        this.messageText = msg.split(":")[1].trim();
-        this.user = new User(msg.split(":")[0]);
+        this.messageText = msg.split("($@)")[1].trim();
+        this.user = new User(msg.split("($@)")[0]);
     }
 
     public String getMessageText() {
@@ -57,7 +57,7 @@ public class Message {
 
     @Override
     public String toString() {
-        return user.toString() + ": " + messageText;
+        return user.toString() + "($@)" + messageText;
     }
 
 }
