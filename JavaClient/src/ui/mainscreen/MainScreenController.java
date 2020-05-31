@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 import models.Client;
 import models.Server;
 
-public class MainScreenController extends ScreenController implements Initializable,Observer {
+public class MainScreenController extends ScreenController implements Initializable, Observer {
 
     // Setting Observable list for list view
     ObservableList<Message> listMessages = FXCollections.observableArrayList();
@@ -62,13 +62,12 @@ public class MainScreenController extends ScreenController implements Initializa
         listViewOnlineUsers.setFocusTraversable(false);
         btnDisconnect.setFocusTraversable(false);
         handleEnterKeyPress();
-        
+
         //Servidor
         Server s = new Server(22);
         s.addObserver(this);
         Thread t = new Thread(s);
         t.start();
-        
 
     }
 
@@ -93,8 +92,8 @@ public class MainScreenController extends ScreenController implements Initializa
         System.out.println(message);
         listMessages.add(message);
         txtMessage.clear();
-        
-        Client c = new Client(ip,22,txtMessage.getText());
+
+        Client c = new Client(ip, 22, txtMessage.getText());
         c.run();
         System.out.println(ip);
     }
@@ -141,6 +140,12 @@ public class MainScreenController extends ScreenController implements Initializa
                 message.setMessageText(txtMessage.getText());
                 // String message = txtMessage.getText();
 
+                //Crear el client
+                Client c = new Client(ip, 22, txtMessage.getText());
+                c.run();
+                System.out.println(ip);
+                
+                
                 System.out.println(message);
                 listMessages.add(message);
                 txtMessage.clear();
@@ -151,6 +156,6 @@ public class MainScreenController extends ScreenController implements Initializa
 
     @Override
     public void update(Observable o, Object o1) {
-        listMessages.add(new Message((String) o1));
+        listMessages.add(new Message(o1.toString(), "Test"));
     }
 }
