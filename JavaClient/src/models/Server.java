@@ -20,17 +20,15 @@ public class Server extends Observable implements Runnable {
 
     private int port;
     
+    ServerSocket server = null;
+    Socket sc = null;
+    
     public Server(int port){
         this.port = port; 
     }
     
     @Override
     public void run() {
-        ServerSocket server = null;
-        Socket sc = null;
-        
-        DataInputStream in;
-        DataOutputStream out;
         
         try {
             server = new ServerSocket(port);
@@ -43,14 +41,13 @@ public class Server extends Observable implements Runnable {
                 System.out.println("Client Connected");
                 //Establecer Comunicacion
                 //Para recibir
-                in = new DataInputStream(sc.getInputStream());
-                
+                DataInputStream in = new DataInputStream(sc.getInputStream());
                 
                 //leer lo que envia el cliente
                 String message = in.readUTF();
                 
                 //imprimir mensaje 
-                System.out.println(message.toString());
+                System.out.println(message);
                 
                 //Metodos de observable
                 this.setChanged();

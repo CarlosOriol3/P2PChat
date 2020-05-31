@@ -16,6 +16,12 @@ public class Message {
         this.date = LocalDate.now();
     }
 
+    public Message(String msg) {
+        this.timeStamp = LocalTime.now();
+        this.date = LocalDate.now();
+        this.messageText = msg;
+    }
+
     public String getMessageText() {
         return messageText;
     }

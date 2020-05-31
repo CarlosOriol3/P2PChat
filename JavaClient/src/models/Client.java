@@ -17,9 +17,9 @@ public class Client implements Runnable{
 
     private String hostIp;
     private int port;
-    private Message mensaje;
+    private String mensaje;
     
-    public Client(String hostIp,int port, Message mensaje) {
+    public Client(String hostIp,int port, String mensaje) {
         this.hostIp = hostIp;
         this.port = port;
         this.mensaje = mensaje;
@@ -27,18 +27,16 @@ public class Client implements Runnable{
     
     
     @Override
-    public void run() {
-        DataOutputStream out;
-        
+    public void run() { 
         try {
             Socket sc = new Socket(hostIp, port);
 
             //Establecer Comunicacion
             
             //para escribir
-            out = new DataOutputStream(sc.getOutputStream());
+            DataOutputStream out = new DataOutputStream(sc.getOutputStream());
 
-            out.writeUTF(mensaje.toString());
+            out.writeUTF(mensaje);
 
             
             sc.close();
@@ -46,5 +44,4 @@ public class Client implements Runnable{
             System.out.println(ex);
         }
     }
-    
 }

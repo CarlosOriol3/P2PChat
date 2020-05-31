@@ -94,7 +94,7 @@ public class MainScreenController extends ScreenController implements Initializa
         listMessages.add(message);
         txtMessage.clear();
         
-        Client c = new Client(ip,5000,message);
+        Client c = new Client(ip,5000,txtMessage.getText());
         System.out.println(ip);
     }
 
@@ -150,6 +150,6 @@ public class MainScreenController extends ScreenController implements Initializa
 
     @Override
     public void update(Observable o, Object o1) {
-        listMessages.add((Message) o1);
+        listMessages.add(new Message((String) o1));
     }
 }
