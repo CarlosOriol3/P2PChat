@@ -32,6 +32,8 @@ public class MainScreenController extends ScreenController implements Initializa
 
     private String ip;
 
+    private final int PORT = 80;
+
     @FXML
     private Label lblIpAddress;
 
@@ -64,7 +66,7 @@ public class MainScreenController extends ScreenController implements Initializa
         handleEnterKeyPress();
 
         //Servidor
-        Server s = new Server(22);
+        Server s = new Server(PORT);
         s.addObserver(this);
         Thread t = new Thread(s);
         t.start();
@@ -117,7 +119,7 @@ public class MainScreenController extends ScreenController implements Initializa
         message.setMessageText(txtMessage.getText());
 
         //Crear el client
-        Client c = new Client(ip, 22, message.toStringNet());
+        Client c = new Client(ip, PORT, message.toStringNet());
         c.run();
         System.out.println(ip);
         
@@ -145,7 +147,7 @@ public class MainScreenController extends ScreenController implements Initializa
                 message.setMessageText(txtMessage.getText());
 
                 //Crear el client
-                Client c = new Client(ip, 22, message.toStringNet());
+                Client c = new Client(ip, PORT, message.toStringNet());
                 c.run();
                 System.out.println(ip);
                 
