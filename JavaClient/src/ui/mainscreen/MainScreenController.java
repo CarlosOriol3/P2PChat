@@ -64,7 +64,7 @@ public class MainScreenController extends ScreenController implements Initializa
         handleEnterKeyPress();
         
         //Servidor
-        Server s = new Server(5000);
+        Server s = new Server(22);
         s.addObserver(this);
         Thread t = new Thread(s);
         t.start();
@@ -94,7 +94,7 @@ public class MainScreenController extends ScreenController implements Initializa
         listMessages.add(message);
         txtMessage.clear();
         
-        Client c = new Client(ip,5000,txtMessage.getText());
+        Client c = new Client(ip,22,txtMessage.getText());
         c.run();
         System.out.println(ip);
     }
