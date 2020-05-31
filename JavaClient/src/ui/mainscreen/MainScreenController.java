@@ -117,7 +117,7 @@ public class MainScreenController extends ScreenController implements Initializa
         message.setMessageText(txtMessage.getText());
 
         //Crear el client
-        Client c = new Client(ip, 22, message.toString());
+        Client c = new Client(ip, 22, message.toStringNet());
         c.run();
         System.out.println(ip);
         
@@ -145,7 +145,7 @@ public class MainScreenController extends ScreenController implements Initializa
                 message.setMessageText(txtMessage.getText());
 
                 //Crear el client
-                Client c = new Client(ip, 22, message.toString());
+                Client c = new Client(ip, 22, message.toStringNet());
                 c.run();
                 System.out.println(ip);
                 
