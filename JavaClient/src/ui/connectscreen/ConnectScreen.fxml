@@ -42,10 +42,5 @@
                 <Font name="Monospaced Regular" size="12.0" />
             </font>
         </Label>
-      <Button fx:id="btnCreateChat" layoutX="53.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleCreateAction" prefHeight="51.0" prefWidth="105.0" text="Create Chat">
-         <font>
-            <Font name="Monospaced Regular" size="12.0" />
-         </font>
-      </Button>
     </children>
 </AnchorPane>

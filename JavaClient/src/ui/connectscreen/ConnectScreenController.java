@@ -30,9 +30,6 @@ public class ConnectScreenController extends ScreenController implements Initial
     private Button btnConnect;
 
     @FXML
-    private Button btnCreate;
-
-    @FXML
     private Label myIp;
 
     @Override
@@ -86,25 +83,7 @@ public class ConnectScreenController extends ScreenController implements Initial
         }
     }
 
-    @FXML
-    private void handleCreateAction(ActionEvent event) {
-        String tmpIp = txtIp.getText();
-        String tmpCodename = txtCodename.getText();
-        
-        Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(MainScreenController.class.getResource("MainScreen.fxml"));
 
-        JavaClient.changeWindow(stage, fxmlLoader, "Main Screen");
-
-        MainScreenController mainScreenController = fxmlLoader.getController();
-        User newUser = new User(tmpCodename);
-        mainScreenController.setIp(tmpIp);
-        mainScreenController.addUser(newUser);
-
-        Stage connectScreen = (Stage) btnConnect.getScene().getWindow();
-
-        connectScreen.close();
-    }
 
 //    private synchronized void StartListener() {
 //        listener = new Thread("listener") {

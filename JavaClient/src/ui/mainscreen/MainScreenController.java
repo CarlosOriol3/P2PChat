@@ -32,7 +32,7 @@ public class MainScreenController extends ScreenController implements Initializa
 
     private String ip;
 
-    private final int PORT = 80;
+    private final int PORT = 22;
 
     @FXML
     private Label lblIpAddress;
@@ -49,19 +49,18 @@ public class MainScreenController extends ScreenController implements Initializa
     @FXML
     private TextArea txtMessage;
 
-    @FXML
-    private ListView<User> listViewOnlineUsers;
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         txtMessage.setWrapText(true);
         listViewMessages.setItems(listMessages);
-        listViewOnlineUsers.setItems(listOnlineUsers);
+        
         setWraptextListView();
         Platform.runLater(() -> lblIpAddress.setText(ip));
         lblIpAddress.setVisible(true);
         listViewMessages.setFocusTraversable(false);
-        listViewOnlineUsers.setFocusTraversable(false);
+        
         btnDisconnect.setFocusTraversable(false);
         handleEnterKeyPress();
 
