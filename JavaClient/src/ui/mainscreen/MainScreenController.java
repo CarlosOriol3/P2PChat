@@ -95,6 +95,7 @@ public class MainScreenController extends ScreenController implements Initializa
         txtMessage.clear();
         
         Client c = new Client(ip,5000,txtMessage.getText());
+        c.run();
         System.out.println(ip);
     }
 

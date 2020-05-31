@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,9 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
-import java.net.*;
 import javafx.scene.control.Label;
-import models.Server;
 
 public class ConnectScreenController extends ScreenController implements Initializable {
 
@@ -37,10 +34,6 @@ public class ConnectScreenController extends ScreenController implements Initial
 
     @FXML
     private Label myIp;
-
-    private Thread listener;
-
-    private volatile Socket socket;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
