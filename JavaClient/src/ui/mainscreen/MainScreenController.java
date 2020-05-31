@@ -80,25 +80,6 @@ public class MainScreenController extends ScreenController implements Initializa
     }
 
     @FXML
-    private void handleSendAction(ActionEvent event) {
-        String validator = txtMessage.getText().trim();
-        if (validator.equals("")) {
-            System.out.println("Mensaje vacio");
-            return;
-        }
-        Message message = new Message();
-        message.setUser(listOnlineUsers.get(0));
-        message.setMessageText(txtMessage.getText());
-        System.out.println(message);
-        listMessages.add(message);
-        txtMessage.clear();
-
-        Client c = new Client(ip, 22, txtMessage.getText());
-        c.run();
-        System.out.println(ip);
-    }
-
-    @FXML
     private void handleDisconnectAction(ActionEvent event) {
         Stage MainScreen = (Stage) btnDisconnect.getScene().getWindow();
         MainScreen.close();
@@ -123,6 +104,28 @@ public class MainScreenController extends ScreenController implements Initializa
         });
     }
 
+    @FXML
+    private void handleSendAction(ActionEvent event) {
+        String validator = txtMessage.getText().trim();
+        if (validator.equals("")) {
+            System.out.println("Mensaje vacio");
+            return;
+        }
+        //Crea el objeto mensaje
+        Message message = new Message();
+        message.setUser(listOnlineUsers.get(0));
+        message.setMessageText(txtMessage.getText());
+
+        //Crear el client
+        Client c = new Client(ip, 22, message.toString());
+        c.run();
+        System.out.println(ip);
+        
+        System.out.println(message);
+        listMessages.add(message);
+        txtMessage.clear();
+    }
+
     private void handleEnterKeyPress() {
         txtMessage.setOnKeyPressed(event -> {
             if (event.isShiftDown() && event.getCode() == KeyCode.ENTER) {
@@ -135,20 +138,22 @@ public class MainScreenController extends ScreenController implements Initializa
                     event.consume();
                     return;
                 }
+
+                //Crea el objeto mensaje
                 Message message = new Message();
                 message.setUser(listOnlineUsers.get(0));
                 message.setMessageText(txtMessage.getText());
-                // String message = txtMessage.getText();
 
                 //Crear el client
-                Client c = new Client(ip, 22, txtMessage.getText());
+                Client c = new Client(ip, 22, message.toString());
                 c.run();
                 System.out.println(ip);
-                
                 
                 System.out.println(message);
                 listMessages.add(message);
                 txtMessage.clear();
+
+                //Consume el enter
                 event.consume();
             }
         });
@@ -156,6 +161,6 @@ public class MainScreenController extends ScreenController implements Initializa
 
     @Override
     public void update(Observable o, Object o1) {
-        listMessages.add(new Message(o1.toString(), "Test"));
+        listMessages.add(new Message(o1.toString()));
     }
 }
