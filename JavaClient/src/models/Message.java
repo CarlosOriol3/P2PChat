@@ -19,7 +19,7 @@ public class Message {
     public Message(String msg) {
         this.timeStamp = LocalTime.now();
         this.date = LocalDate.now();
-        this.messageText = msg.split(" ")[1];
+        this.messageText = msg.split(":")[1].trim();
         this.user = new User(msg.split(":")[0]);
     }
 
