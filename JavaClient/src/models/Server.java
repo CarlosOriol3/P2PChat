@@ -5,6 +5,7 @@
  */
 package models;
 
+//Import Libraries
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -15,46 +16,56 @@ import java.util.Observable;
  *
  * @author Carlos
  */
-public class Server extends Observable implements Runnable {
 
+//Implements the Runnable interface for thread
+public class Server extends Observable implements Runnable {
+    
+    //Attribute
     private int port;
     
+    //Inicialize Sockets
     ServerSocket server = null;
     Socket sc = null;
     
+    //Constructor
     public Server(int port){
         this.port = port; 
     }
     
+    //Run method form Interface
     @Override
     public void run() {
         
         try {
             server = new ServerSocket(port);
             
+            //Notify to the console that the server is running
             System.out.println("Server init");
             
             while(true){
-                //Se queda esperando
+                //Waits until there is a Connection or throws exception
                 sc = server.accept();
+                
+                //Notify in the console when there is a Connection
                 System.out.println("Client Connected");
-                //Establecer Comunicacion
-                //Para recibir
+                
+                //Recieve the information from the client
                 DataInputStream in = new DataInputStream(sc.getInputStream());
                 
-                //leer lo que envia el cliente
+                //Read the message
                 String message = in.readUTF();
                 
-                //imprimir mensaje 
+                //Print the message on the console
                 System.out.println(message);
                 
-                //Metodos de observable
+                //Observable Methods
                 this.setChanged();
                 this.notifyObservers(message);
                 this.clearChanged();
                 
-                //Cerrar el cliente 
+                //Close Client
                 sc.close();
+                //Notify the console when client disconnects
                 System.out.println("Client Disconnect");
             }
         } catch (IOException ex) {

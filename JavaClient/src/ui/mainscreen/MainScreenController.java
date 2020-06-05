@@ -64,28 +64,31 @@ public class MainScreenController extends ScreenController implements Initializa
         btnDisconnect.setFocusTraversable(false);
         handleEnterKeyPress();
 
-        //Servidor
+        //Create Server
         Server s = new Server(PORT);
         s.addObserver(this);
         Thread t = new Thread(s);
         t.start();
 
     }
-
+    //Methos to set Ip Address
     public void setIp(String ip) {
         this.ip = ip;
     }
-
+    
+    //Method to add user to the screen
     public void addUser(User user) {
         listOnlineUsers.add(user);
     }
 
+    //Disconnect Button
     @FXML
     private void handleDisconnectAction(ActionEvent event) {
         Stage MainScreen = (Stage) btnDisconnect.getScene().getWindow();
         MainScreen.close();
     }
 
+    //Method to wrap text in a list view
     private void setWraptextListView() {
         listViewMessages.setCellFactory(param -> new ListCell<Message>() {
             @Override
@@ -105,6 +108,7 @@ public class MainScreenController extends ScreenController implements Initializa
         });
     }
 
+    //Send Button
     @FXML
     private void handleSendAction(ActionEvent event) {
         String validator = txtMessage.getText().trim();
@@ -112,21 +116,27 @@ public class MainScreenController extends ScreenController implements Initializa
             System.out.println("Mensaje vacio");
             return;
         }
-        //Crea el objeto mensaje
+        //Create Message Object
         Message message = new Message();
         message.setUser(listOnlineUsers.get(0));
         message.setMessageText(txtMessage.getText());
 
-        //Crear el client
+        //Create Client, run thread and send to the server
         Client c = new Client(ip, PORT, message.toStringNet());
         c.run();
         System.out.println(ip);
         
+        //Print message on console
         System.out.println(message);
+        
+        //Add message to the listbox
         listMessages.add(message);
+        
+        //Clear Field
         txtMessage.clear();
     }
 
+    //Method to send message pressing the Enter key
     private void handleEnterKeyPress() {
         txtMessage.setOnKeyPressed(event -> {
             if (event.isShiftDown() && event.getCode() == KeyCode.ENTER) {
@@ -140,26 +150,33 @@ public class MainScreenController extends ScreenController implements Initializa
                     return;
                 }
 
-                //Crea el objeto mensaje
+                //Create Message Object
                 Message message = new Message();
                 message.setUser(listOnlineUsers.get(0));
                 message.setMessageText(txtMessage.getText());
 
-                //Crear el client
+               
+                //Create Client, run thread and send to the server
                 Client c = new Client(ip, PORT, message.toStringNet());
                 c.run();
                 System.out.println(ip);
                 
+                //Print message on console
                 System.out.println(message);
+                
+                //Add message to the listbox
                 listMessages.add(message);
+                
+                //Add message to the listbox
                 txtMessage.clear();
 
-                //Consume el enter
+                //Consume enter press
                 event.consume();
             }
         });
     }
 
+    //Observable method to update listbox on the other screen
     @Override
     public void update(Observable o, Object o1) {
         listMessages.add(new Message(o1.toString()));

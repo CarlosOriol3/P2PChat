@@ -38,6 +38,7 @@ public class ConnectScreenController extends ScreenController implements Initial
 //            StartListener();
 //        });
 
+        //Get ip address
         String systemipaddress;
         try {
             URL url_name = new URL("http://bot.whatismyipaddress.com/");

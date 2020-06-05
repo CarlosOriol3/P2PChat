@@ -1,5 +1,7 @@
 package javaclient;
 
+
+//Import Libraries
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -12,6 +14,7 @@ import ui.ScreenController;
 
 public class JavaClient extends Application {
 
+    //Open the Connect Screen
     @Override
     public void start(Stage stage) throws Exception {
         changeWindow(stage, new FXMLLoader(ConnectScreenController.class.getResource("ConnectScreen.fxml")),
@@ -23,6 +26,7 @@ public class JavaClient extends Application {
         System.exit(0);
     }
 
+    //Method to change to another window
     public static void changeWindow(Stage stage, FXMLLoader fxmlLoader, String windowTitle) {
         if (stage == null) {
             stage = new Stage();
@@ -42,6 +46,7 @@ public class JavaClient extends Application {
         }
     }
 
+    //Method to read CSS
     private static String getCSS(ScreenController controller) {
         return controller.getClass()
                 .getResource("style.css")

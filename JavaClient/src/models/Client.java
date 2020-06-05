@@ -13,12 +13,16 @@ import java.net.Socket;
  *
  * @author Carlos
  */
+
+//Implements the Runnable Interface for thread
 public class Client implements Runnable{
 
+    //Attributes
     private String hostIp;
     private int port;
     private String mensaje;
     
+    //Constructor
     public Client(String hostIp,int port, String mensaje) {
         this.hostIp = hostIp;
         this.port = port;
@@ -26,19 +30,19 @@ public class Client implements Runnable{
     }
     
     
+    //Run Method
     @Override
     public void run() { 
         try {
             Socket sc = new Socket(hostIp, port);
 
-            //Establecer Comunicacion
-            
-            //para escribir
+            //Create Connection
+  
             DataOutputStream out = new DataOutputStream(sc.getOutputStream());
 
             out.writeUTF(mensaje);
 
-            
+            //Close Connection
             sc.close();
         } catch (IOException ex) {
             System.out.println(ex);

@@ -1,10 +1,12 @@
 package models;
 
+//Import Libraries
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Message {
 
+    //Attributes
     private String messageText;
     private LocalTime timeStamp;
     private LocalDate date;
@@ -15,7 +17,8 @@ public class Message {
         this.timeStamp = LocalTime.now();
         this.date = LocalDate.now();
     }
-
+    
+    //Other Constructor
     public Message(String msg) {
         this.timeStamp = LocalTime.now();
         this.date = LocalDate.now();
@@ -23,6 +26,7 @@ public class Message {
         this.messageText = msg.split("\u0004")[1].trim();
     }
 
+    
     public String getMessageText() {
         return messageText;
     }
@@ -60,6 +64,7 @@ public class Message {
         return user.toString() + ": " + messageText;
     }
 
+    //To string method to send to a server
     public String toStringNet() {
         return user.toString() + "\u0004" + messageText;
     }
